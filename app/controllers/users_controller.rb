@@ -71,16 +71,16 @@ class UsersController < ApplicationController
   def auth
     authorized_user = User.authenticate(params[:user_auth][:email],params[:user_auth][:password])
     if authorized_user
-      if !authorized_user.confirm
-        flash[:error] = "Account has not been activated, Please check your email"
-        redirect_to login_path
-      end
+      #if !authorized_user.confirm
+      #  flash[:error] = "Account has not been activated, Please check your email"
+      #  redirect_to login_path and return
+      #end
       flash[:success] = "Welcome"
       session[:user_id] = authorized_user.id
       if authorized_user.admin
         redirect_to admin_path and return
       end
-      redirect_to users_path and return
+      redirect_to users_path
     else
       flash[:notice] = "Invalid Username or Password"
       redirect_to login_path

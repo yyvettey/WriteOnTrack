@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	has_many :tasks , :dependent=> :destroy, :autosave => true
-	before_save :encrypt_password, :send_email
+	#before_save :encrypt_password, :send_email
+	before_save :encrypt_password
 	EMAIL_REGEX = /\A.+@.+\Z/i
 	validates :email, :uniqueness => true, :format => EMAIL_REGEX
 	validates :password, :confirmation => true #password_confirmation attr
@@ -17,10 +18,10 @@ class User < ApplicationRecord
 	  end
 	end
 
-	def send_email
-		self.confirm_code = BCrypt::Engine.hash_secret(self.email,self.salt)
-		ConfMailer.send_conf_email(self).deliver_now
-	end
+	#def send_email
+	#	self.confirm_code = BCrypt::Engine.hash_secret(self.email,self.salt)
+	#	ConfMailer.send_conf_email(self).deliver_now
+	#end
 
 	def set_confirm
 		self.update_column(:confirm_code, nil)

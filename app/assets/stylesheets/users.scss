@@ -20,11 +20,13 @@ font-color: white;
 border-radius: 0px;
 }
 $borderWidth1: 6px;
+$borderWidth2: 6px;
 $animationTime: 0s;
 $animationTime2: 1.5s;
 $border-color-default: #eee;
 $border-color-fill: #53c67b;
 $size1: 120px;
+$size2: 120px;
 $howManySteps: 120;
 
 .progress1 {
@@ -151,9 +153,9 @@ transform: rotate(#{$degrees}deg);
 }
 }
 .progress2 {
-width: $size;
-height: $size;
-line-height: $size;
+width: $size2;
+height: $size2;
+line-height: $size2;
 background: none;
 margin: 0 auto;
 box-shadow: none;
@@ -163,7 +165,7 @@ content: "";
 width: 100%;
 height: 100%;
 border-radius: 50%;
-border: $borderWidth solid $border-color-default;
+border: $borderWidth2 solid $border-color-default;
 position: absolute;
 top: 0;
 left: 0;
@@ -183,7 +185,7 @@ left: 0;
 width: 100%;
 height: 100%;
 background: none;
-border-width: $borderWidth;
+border-width: $borderWidth2;
 border-style: solid;
 position: absolute;
 top: 0;
@@ -191,8 +193,8 @@ border-color: $border-color-fill;
 }
 .progress2-left .progress2-bar {
 left: 100%;
-border-top-right-radius: ($size/2);;
-border-bottom-right-radius: ($size/2);;
+border-top-right-radius: ($size2/2);;
+border-bottom-right-radius: ($size2/2);;
 border-left: 0;
 -webkit-transform-origin: center left;
 transform-origin: center left;
@@ -202,8 +204,8 @@ transform-origin: center left;
 right: 0;
 .progress2-bar {
 left: -100%;
-border-top-left-radius: ($size/2);;
-border-bottom-left-radius: ($size/2);;
+border-top-left-radius: ($size2/2);;
+border-bottom-left-radius: ($size2/2);;
 border-right: 0;
 -webkit-transform-origin: center right;
 transform-origin: center right;
