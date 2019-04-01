@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_175041) do
     t.integer "hours", default: 0
     t.integer "minutes", default: 0
     t.integer "seconds", default: 0
+    t.integer "progress", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_timers_on_task_id"

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><%= @task.title%></title>
   </head>
-  <body>    
+  <body>
     <div class="navbar">
       <div class="header navbar top-bar fixed" id="myHeader">
         <div class="navbar-header">
@@ -36,43 +36,44 @@
       </div>
     </div>
     
-    <div class="container" style="padding-top: 2%;">
-      <div class="row">
-        <div class="text-center">
-          <div class="progress2" data-percentage="<%=  if @percent>100; 100; else; @percent.to_i; end; %>">
-            <span class="progress2-left"><span class="progress2-bar"></span></span>
-            <span class="progress2-right"><span class="progress2-bar"></span></span>
-            <div class="progress2-value">
-              <div>
-                <%=  if @percent>100; 100; else; @percent; end; %>%<br>
-                <span><strong> Completed </span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-2 text-center"></div>
+      <div class="col-md-8 text-left">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Writing Time</th>
+              <th scope="col">Writing Count</th>
+              <th scope="col">Update Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <% @task_timers.each do |timer|%>
+            <tr>
+              <td><%= timer.hours %> hours <%= timer.minutes %> minutes <%= timer.seconds %> seconds </td>
+              <td><%= timer.progress %> pages</td>
+              <td><%= timer.created_at %> </td>
+              <td>Delete </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
       </div>
     </div>
-
-    <div class="container text-center" style="padding-top: 2%;">
-      <div class="container text-center">
-        <div class="text-center">
-          <label>Write Frequency</label>
-        </div>
-        <%= line_chart @times, {curve: true, ytitle: "Minutes", xtitle: "Date"}%>
-      </div>
-    </div>
-
+  
 
     <div class="row" style="margin-bottom:17%;margin-top:2%;" >
       <div class="col-md-4 text-center">
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "Back" , users_path , {:class=> 'btn btn-info'}%>
+        <%= link_to "Back" , user_task_path(@user,@task) , {:class=> 'btn btn-info'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "View Progress History", progress_user_task_path(@user,@task) , {:class=>'btn btn-warning'}%>
+        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-warning'}%>
       </div>
+      
     </div>
-    
   </body>
 </html>
