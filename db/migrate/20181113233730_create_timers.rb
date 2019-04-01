@@ -5,6 +5,7 @@ class CreateTimers < ActiveRecord::Migration[5.2]
       t.integer 'hours', :default=>0
       t.integer 'minutes', :default=>0
       t.integer 'seconds', :default=>0
+      t.integer 'progress', :default=>0
       t.timestamps
     end
   end
