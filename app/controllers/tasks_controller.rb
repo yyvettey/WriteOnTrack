@@ -80,6 +80,9 @@ class TasksController < ApplicationController
     
     if !@timer.save or !@task.save
       flash[:error] = "Unable to update, please retry again"
+    else
+      flash[:success] = "Congradualtions! You have finished " + 
+      (params[:task][:current_value]) + " pages. Keep it going!"
     end
     
     redirect_to user_task_path(@user,@task)
