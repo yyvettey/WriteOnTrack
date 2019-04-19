@@ -8,13 +8,16 @@
   <script>
     <script type="text/javascript" src="../assets/javascripts/ez.countimer.js">
     <script type="text/javascript" src="../assets/javascripts/ez.countimer.min.js">
-
   </script>
     <div class="navbar">
       <div class="header navbar top-bar fixed" id="myHeader">
         <div class="navbar-header">
           <%=image_tag("UWC_white.png", {class:"img-responsive", style:"height:10vh;"}) %>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%=link_to "Dashboard", users_path%></li>
+          <li><%=link_to "Logout", logout_path%></li>
+        </ul>
       </div>
       <div class="collapse navbar-collapse">
       </div>
