@@ -31,6 +31,15 @@ Then("I should see {string} message") do |string|
   expect(page).to have_content(string)
 end
 
+Then("I should see {string}") do |string|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
+
+
 Then("I should be on {string} page") do |string|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
