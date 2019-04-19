@@ -14,3 +14,10 @@ FactoryGirl.define do
         # user.salt "$2a$10$WFVWNZhA2572N0.NLkTmve"
     end
 end
+
+FactoryGirl.define do
+    factory :task do |task|
+        #
+        #
+    end
+end

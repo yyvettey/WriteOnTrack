@@ -15,7 +15,7 @@ Background: login page
       And I fill in "Confirm Password" with "amith123"
       And  I press "Signup"
       Then I should be on "login" page
-      # Then I should see "Account Created successfully, Please check your email for Verification" message
+      Then I should see "Account Created successfully, Please check your email for Verification" message
 
     Scenario: User login
       When I am on "login" users page
