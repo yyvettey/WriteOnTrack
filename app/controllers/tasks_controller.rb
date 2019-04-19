@@ -26,9 +26,9 @@ class TasksController < ApplicationController
       flash[:error] = "Title already exists"
       redirect_to new_user_task_path and return
     end
-    @tasks = @user.tasks.new(tasks)
-    if @tasks.save
-      redirect_to users_path
+    @task = @user.tasks.new(tasks)
+    if @task.save
+      redirect_to new_progress_user_task_path(@user,@task)
     else
       flash[:error] = "Invalid fields #{@tasks.errors.full_messages}"
       redirect_to new_user_task_path(@user)
@@ -88,6 +88,11 @@ class TasksController < ApplicationController
     redirect_to user_task_path(@user,@task)
   end
 
+  def view
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:id])
+  end
+  
   def edit
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
@@ -129,6 +134,15 @@ class TasksController < ApplicationController
     flash[:success] = "Task Destroyed successfully"
     redirect_to users_path
   end
+  
+  def delete_progress
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:id])
+    @timer = @task.timers.find(params[:timer_id])
+    @timer.destroy
+    flash[:success] = "Task Destroyed successfully"
+    redirect_to progress_user_task_path(@user,@task)
+  end
 
   protected
   def task_params
@@ -140,4 +154,6 @@ class TasksController < ApplicationController
         redirect_to login_path
     end
   end
+  
+
 end

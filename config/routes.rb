@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'users/mail_auth', to:'users#mail_confirm'
   
   get 'users/:user_id/tasks/progress/:id', to: 'tasks#progress', as: 'progress_user_task'
+  delete 'users/:user_id/tasks/:id/delete_progress/:timer_id', to: 'tasks#delete_progress', as: 'delete_progress'
+  get 'users/:user_id/tasks/view/:id', to: 'tasks#view', as: 'view_user_task'
   get 'users/:user_id/tasks/new_progress/:id', to: 'tasks#new_progress', as: 'new_progress_user_task'
   resources :users do
     resources :tasks
