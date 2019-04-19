@@ -1,17 +1,11 @@
 #
 #  This file conatins the web steps to pass senarios for user stories
 #
-#
+# #
 Given("a user") do
-    user = User.new
-    user.first_name = "Amith"
-    user.last_name = "Murakonda"
-    user.email = "amithmurakonda@gamil.com"
-    user.password = "$2a$10$WFVWNZhA2572N0.NLkTmveUyJfe1NrS3BFJ0fJmsN3FtjtD99F9sG"
-    user.confirm = true
-    user.confirm_code = nil
-    user.salt = "$2a$10$WFVWNZhA2572N0.NLkTmve"
-  end
+  # @user = Factory(:user, :first_name => "Amith", :last_name => "Murakonda", :email => "amithmurakonda@gamil.com", :password => "$2a$10$WFVWNZhA2572N0.NLkTmveUyJfe1NrS3BFJ0fJmsN3FtjtD99F9sG", :confirm => true, :confirm_code => nil, :salt => "$2a$10$WFVWNZhA2572N0.NLkTmve")
+  @user = FactoryGirl.create(:user)
+end
 
 Given("a task for the user:") do |task_table|
   user = User.first
@@ -34,11 +28,7 @@ And("I press {string}") do |string|
 end
 
 Then("I should see {string} message") do |string|
-  if page.respond_to? :should
-    page.should have_no_content(text)
-  else
-    assert page.has_no_content?(text)
-  end
+  expect(page).to have_content(string)
 end
 
 Then("I should be on {string} page") do |string|

@@ -10,6 +10,7 @@ Background: I logged in as "amithmurakonda@gmail.com"
     And I fill in "Email" with "amithmurakonda@gmail.com"
     And I fill in "Password" with "amith123"
     And I press "Login"
+    # Then I should see "Invalid Username or Password" message
     Then I should be redirected to "users" page
     And I press "New Task"
     Then I should be on "new task" page
