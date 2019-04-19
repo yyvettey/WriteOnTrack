@@ -55,7 +55,7 @@
               <td><%= timer.hours %> hours <%= timer.minutes %> minutes <%= timer.seconds %> seconds </td>
               <td><%= timer.progress %> pages</td>
               <td><%= timer.created_at %> </td>
-              <td> <%= link_to "Edit", delete_progress_path(@user, @task, timer) , {:class=> "btn btn-warning", :method=> :delete, :data => {:confirm => "Are you sure"}}%>
+              <td> <%= link_to "Edit", edit_progress_path(@user, @task, timer) , {:class=> "btn btn-warning"}%>
                    <%= link_to "Delete", delete_progress_path(@user, @task, timer) , {:class=> "btn btn-danger", :method=> :delete, :data => {:confirm => "Are you sure"}}%>
               </td>
             </tr>

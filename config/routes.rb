@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   delete 'users/:user_id/tasks/:id/delete_progress/:timer_id', to: 'tasks#delete_progress', as: 'delete_progress'
   get 'users/:user_id/tasks/view/:id', to: 'tasks#view', as: 'view_user_task'
   get 'users/:user_id/tasks/new_progress/:id', to: 'tasks#new_progress', as: 'new_progress_user_task'
+  get 'users/:user_id/tasks/:id/edit_progress/:timer_id', to: 'tasks#edit_progress', as: 'edit_progress'
+  put 'users/:user_id/tasks/:id/update_progress/:timer_id', to: 'tasks#update_progress', as: 'update_progress'
   resources :users do
     resources :tasks
   end

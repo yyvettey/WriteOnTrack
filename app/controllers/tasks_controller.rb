@@ -97,6 +97,12 @@ class TasksController < ApplicationController
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
   end
+  
+  def edit_progress
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:id])
+    @timer = @task.timers.find(params[:timer_id])
+  end
 
   def update
     @user = User.find(params[:user_id])
@@ -126,6 +132,16 @@ class TasksController < ApplicationController
       redirect_to edit_user_task_path(@user,@task)
     end
   end
+  
+  def update_progress
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:id])
+    @timer = @task.timers.find(params[:timer_id])
+    progress = progress_params
+    @timer.update_attributes(progress)
+    
+    redirect_to progress_user_task_path(@user,@task)
+  end
 
   def destroy
     @user = User.find(params[:user_id])
@@ -147,6 +163,10 @@ class TasksController < ApplicationController
   protected
   def task_params
     params.require(:task).permit(:title, :email, :desc, :target_date, :target_value, :measure, :create_date,:custom_measure,:hour,:min,:sec)
+  end
+  
+  def progress_params
+    params.require(:timer).permit(:hours, :minutes, :seconds, :progress)
   end
   
   def login_req

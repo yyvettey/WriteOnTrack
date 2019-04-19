@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6" style="margin-top: 50px;">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h3>Edit Progress</h3>
+        </div>
+        <div class="panel-body">
+          <%= bootstrap_form_for(:timer, {:url => update_progress_path(@user, @task, @timer),:method=> :put}) do |f| %>
+             <%= f.text_field :hours, label: 'Hours:', required: true%>
+             <%= f.text_field :minutes, label: 'Minutes:', required: true%>
+             <%= f.text_field :seconds, label: 'Seconds:', required: true%>
+             <%= f.text_field :progress, label: 'Writing Counts:', required: true%>
+            <div class="text-center col-md-6"> <%= f.submit :Update , {:class=>'btn btn-warning'}%></div>
+            <div class="text-center col-md-6"><%= link_to "Back" , user_task_path(@user,@task) , {:class=> 'btn btn-info'}%></div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>t
