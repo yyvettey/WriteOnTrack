@@ -75,3 +75,38 @@ Then("I should see all my tasks") do
       assert page.has_no_content?(user.tasks.first.title)
     end
 end
+
+Given("a task") do
+  @user = FactoryGirl.create(:task)
+end
+
+When("I am on {string} page") do |string|
+  visit path_to(string)
+end
+
+Then("I should see all the Progresses") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("I back to the {string} page") do |string|
+  visit path_to(string)
+end
+
+Then("I back to the dashboard") do
+  visit '/users'
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == path_to("users")
+  else
+    assert_equal path_to(page_name), current_path
+  end
+end
+
+Given("the following tasks:") do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("I update progress to {string}") do |string|
+  fill_in(progress, :with => string)
+end
