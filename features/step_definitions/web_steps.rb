@@ -102,10 +102,6 @@ Then("I back to the dashboard") do
   end
 end
 
-Given("the following tasks:") do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 Then("I update progress to {string}") do |string|
   fill_in(progress, :with => string)
