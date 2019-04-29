@@ -24,6 +24,9 @@ module NavigationHelpers
     when /^Task.*$/
       task = @user.tasks.find_by(title: page_name)
       user_task_path(@user,task)
+    
+    when /^Begin Progress Page$/
+        'users/1/tasks/new_progress/1'
 
     when /index$/
       '/users'
