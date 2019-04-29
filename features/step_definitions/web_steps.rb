@@ -7,12 +7,20 @@ Given("a user") do
   @user = FactoryGirl.create(:user)
 end
 
+Given("a task") do
+  # @user = Factory(:user, :first_name => "Amith", :last_name => "Murakonda", :email => "amithmurakonda@gamil.com", :password => "$2a$10$WFVWNZhA2572N0.NLkTmveUyJfe1NrS3BFJ0fJmsN3FtjtD99F9sG", :confirm => true, :confirm_code => nil, :salt => "$2a$10$WFVWNZhA2572N0.NLkTmve")
+  @task = FactoryGirl.create(:task)
+end
+
 Given("a task for the user:") do |task_table|
   user = User.first
-  puts user
+  # puts user
   task_table.hashes.each do |task|
+    task[:target_date] = task[:target_date].to_time
+    task[:create_date] = task[:create_date].to_time
     user.tasks.create!(task)
   end
+  # puts user.tasks.first
 end
 
 When("I am on {string} users page") do |string|
@@ -25,6 +33,10 @@ end
 
 And("I press {string}") do |string|
   click_on(string)
+end
+
+And("I follow {string}") do |string|
+  click_link(string)
 end
 
 Then("I should see {string} message") do |string|
@@ -102,7 +114,6 @@ Then("I back to the dashboard") do
   end
 end
 
-
 Then("I update progress to {string}") do |string|
-  fill_in(progress, :with => string)
+  fill_in("progress", :with => string)
 end

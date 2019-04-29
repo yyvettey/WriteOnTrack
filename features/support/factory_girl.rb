@@ -17,7 +17,12 @@ end
 
 FactoryGirl.define do
     factory :task do |task|
-        #
-        #
+        task.title "Task 1"
+        task.create_date "2018-10-29 14:18:21"
+        task.target_date "2019-02-16 00:00:00"
+        task.target_value "100"
+        task.desc "Complete my thesis by February 16th"
+        task.measure "Page"
+        task.current_value "1"
     end
 end

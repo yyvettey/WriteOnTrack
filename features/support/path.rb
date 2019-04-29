@@ -8,6 +8,7 @@ module NavigationHelpers
 
 
   def path_to(page_name)
+    puts page_name
     case page_name
 
     when /^new task$/
@@ -20,6 +21,9 @@ module NavigationHelpers
       edit_movie_path(Movie.where("title=?",$1).first)
     when /^users$/
       '/users'
+    when /^Task.*$/
+      task = @user.tasks.find_by(title: page_name)
+      user_task_path(@user,task)
 
     when /index$/
       '/users'
