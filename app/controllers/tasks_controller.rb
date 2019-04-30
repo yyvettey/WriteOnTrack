@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to new_progress_user_task_path(@user,@task)
     else
-      flash[:error] = "Invalid fields #{@tasks.errors.full_messages}"
+      flash[:error] = "Invalid fields #{@task.errors.full_messages}"
       redirect_to new_user_task_path(@user)
     end
   end
@@ -49,14 +49,14 @@ class TasksController < ApplicationController
       end
     end
   end
-  
+
   def progress
     @user = User.find(session[:user_id])
     @task = @user.tasks.find(params[:id])
-    
+
     @task_timers = @task.timers
   end
-  
+
   def new_progress
     @user = User.find(session[:user_id])
     @task = @user.tasks.find(params[:id])
@@ -77,14 +77,14 @@ class TasksController < ApplicationController
     @timer.minutes = params[:task][:min]
     @timer.seconds = params[:task][:sec]
     @timer.progress = params[:task][:current_value].to_i
-    
+
     if !@timer.save or !@task.save
       flash[:error] = "Unable to update, please retry again"
     else
-      flash[:success] = "Congradualtions! You have finished " + 
+      flash[:success] = "Congradualtions! You have finished " +
       (params[:task][:current_value]) + " pages. Keep it going!"
     end
-    
+
     redirect_to user_task_path(@user,@task)
   end
 
@@ -92,12 +92,12 @@ class TasksController < ApplicationController
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
   end
-  
+
   def edit
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
   end
-  
+
   def edit_progress
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
@@ -132,14 +132,14 @@ class TasksController < ApplicationController
       redirect_to edit_user_task_path(@user,@task)
     end
   end
-  
+
   def update_progress
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
     @timer = @task.timers.find(params[:timer_id])
     progress = progress_params
     @timer.update_attributes(progress)
-    
+
     redirect_to progress_user_task_path(@user,@task)
   end
 
@@ -150,7 +150,7 @@ class TasksController < ApplicationController
     flash[:success] = "Task Destroyed successfully"
     redirect_to users_path
   end
-  
+
   def delete_progress
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
@@ -164,16 +164,16 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :email, :desc, :target_date, :target_value, :measure, :create_date,:custom_measure,:hour,:min,:sec)
   end
-  
+
   def progress_params
     params.require(:timer).permit(:hours, :minutes, :seconds, :progress)
   end
-  
+
   def login_req
     if session[:user_id]==nil
         redirect_to login_path
     end
   end
-  
+
 
 end
