@@ -74,10 +74,10 @@
         <%= link_to "Back" , users_path , {:class=> 'btn btn-info'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "View Progress History", progress_user_task_path(@user,@task) , {:class=>'btn btn-warning'}%>
+        <%= link_to "View Progress History", progress_user_task_path(@user,@task) , {:class=>'btn btn-success'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-warning'}%>
+        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-primary'}%>
       </div>
     </div>
     
