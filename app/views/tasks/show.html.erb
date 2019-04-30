@@ -27,7 +27,7 @@
       
     <div class="row">
       <div class="col-md-4 text-center">
-        <%= label :task, :create_date, "Create Date: "%>
+        <%= label :task, :create_date, "Project Start Date: "%>
         <span><%=  @task.create_date.strftime("%d - %m - %Y")%></span>
       </div>
       <div class="col-md-4 text-center">
@@ -35,7 +35,7 @@
         <span><%= if (@task.target_date - Time.now) < 0; 0; else; ((@task.target_date - Time.now)/86400).ceil ;end  %> Days</span>
       </div>
       <div class="col-md-4 text-center">
-        <%= label :task, :target_date, "Target Date: "%>
+        <%= label :task, :target_date, "Project Deadline: "%>
         <span><%=  @task.target_date.strftime("%d - %m - %Y")%></span>
       </div>
     </div>
