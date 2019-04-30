@@ -27,7 +27,8 @@ module NavigationHelpers
       progress_user_task_path(@user,@task)
 
     when /^Begin Progress Page$/
-        'users/1/tasks/new_progress/1'
+        /users\/[0-9]+\/tasks\/new_progress\/[0-9]+/
+        # new_progress_user_task_path(@user,Task.last)
 
     when /index$/
       '/users'

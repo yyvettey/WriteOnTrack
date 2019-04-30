@@ -43,20 +43,21 @@ end
 
 Then("I should see {string}") do |string|
   if page.respond_to? :should
-    page.should have_content(text)
+    page.should have_content(string)
   else
-    assert page.has_content?(text)
+    assert page.has_content?(string)
   end
 end
 
 
 Then("I should be on {string} page") do |string|
-  current_path = URI.parse(current_url).path
-  if current_path.respond_to? :should
-    current_path.should == path_to(string)
-  else
-    assert_equal path_to(page_name), current_path
-  end
+  expect(page).to have_current_path(path_to(string))
+  # current_path = URI.parse(current_url).path
+  # if current_path.respond_to? :should
+  #   current_path.should == path_to(string)
+  # else
+  #   assert_equal path_to(page_name), current_path
+  # end
 end
 
 Given("I am logged in as {string}") do |string|
@@ -117,6 +118,6 @@ Then("I back to the dashboard") do
   end
 end
 
-Then("I update progress to {string}") do |string|
-  fill_in("progress", :with => string)
+Then("I update {string} to {string}") do |field, string|
+  fill_in(field, :with => string)
 end

@@ -19,8 +19,8 @@ Background: login page
         And I should see "Add a new task"
         And I press "Add a new task"
         Then I should be on "new task" page
-        And  I fill in "Title" with "test0"
-        And I fill in "Target Value" with "10"
+        And  I fill in "Project Name" with "test0"
+        And I fill in "Target" with "10"
         And I fill in "Description" with "test for test"
         And  I press "Create"
         Then I should be redirected to "Begin Progress Page" page

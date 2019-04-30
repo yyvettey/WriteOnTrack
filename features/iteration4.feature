@@ -19,7 +19,10 @@ Background: I logged in as "amithmurakonda@gmail.com"
     And I press "Login"
     Then I should be redirected to "users" page
 
-    And I press "Task 1"
-    Then I should be on "Task 1" page
-    Then I update progress to "10"
-    Then I should see "Progress updated to '10% Pages Completed'"
+    And I press "Start Writing!"
+    Then I should be on "Begin Progress Page" page
+    Then I update "Update Progress" to "10"
+    And I fill in "task_hour" with "0"
+    And I fill in "task_min" with "0"
+    And I fill in "task_sec" with "10"
+    # Then I should see "Progress updated to '10% Pages Completed'"

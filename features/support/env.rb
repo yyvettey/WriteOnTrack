@@ -9,6 +9,9 @@ require 'simplecov'
 SimpleCov.start 'rails'
 # require "factory_girl/step_definitions"
 require "factory_girl"
+require 'capybara/rails'
+require 'capybara/cucumber'
+require 'capybara/session'
 # require "test/factories"
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
