@@ -24,9 +24,9 @@
                 Howdy, welcome back! <br><br>
                 
                 You have created <%= @user_tasks.size %> tasks<br>
-                and completed <%= @user_tasks.select { |task| (task.current_value*100)/task.target_value >= 100 }.size %> tasks. <br>
-                You have written <%= @user_tasks.size %> pages <br>
-                in <%= @user_tasks.size %> hours <%= @user_tasks.size %> minutes! <br><br>
+                and completed <%= @user_tasks.select { |task| (task.current_value*100)/task.target_value >= 100 }.size %> tasks. <br><br>
+                <!--You have written <%= @user_tasks.size %> pages <br>-->
+                <!--in <%= @user_tasks.size %> hours <%= @user_tasks.size %> minutes! <br><br>-->
                 
                 Congratulations, you are among the <br>
                 top5% writers in the world! <br>
