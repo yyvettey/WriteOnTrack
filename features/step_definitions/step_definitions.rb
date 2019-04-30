@@ -111,7 +111,7 @@ FactoryGirl.factories.each do |factory|
     end
 
     Given /^the following (?:#{human_name}|#{human_name.pluralize}) exists?:?$/i do |table|
-      ActiveSupport::Deprecation.warn %{The step 'Given the following #{human_name} exists:' is deprecated and will be removed in 4.0}
+      # ActiveSupport::Deprecation.warn %{The step 'Given the following #{human_name} exists:' is deprecated and will be removed in 4.0}
 
       table.hashes.each do |human_hash|
         attributes = convert_human_hash_to_attribute_hash(human_hash, factory.associations)

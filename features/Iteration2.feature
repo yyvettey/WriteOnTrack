@@ -6,11 +6,15 @@ Feature: Create new user on university writing tracker
 
 Background: login page
 
+    Given the following users exist:
+    | First Name | Last Name | Email             | Password |
+    | Amith      | Murakonda | random5@gmail.com | amith123 |
+
     Scenario: add user
       When I am on "create" users page
       And  I fill in "First Name" with "Amith"
       And I fill in "Last Name" with "Murakonda"
-      And I fill in "Email" with "random5@gmail.com"
+      And I fill in "Email" with "random4@gmail.com"
       And I fill in "Password" with "amith123"
       And I fill in "Confirm Password" with "amith123"
       And  I press "Signup"
@@ -22,5 +26,4 @@ Background: login page
       And I fill in "Email" with "random5@gmail.com"
       And I fill in "Password" with "amith123"
       And I press "Login"
-      Then I should see "Invalid Username or Password" message
       Then I should be redirected to 'users' page

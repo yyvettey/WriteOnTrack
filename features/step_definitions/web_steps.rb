@@ -13,14 +13,12 @@ Given("a task") do
 end
 
 Given("a task for the user:") do |task_table|
-  user = User.first
-  # puts user
+  @user = User.first
   task_table.hashes.each do |task|
     task[:target_date] = task[:target_date].to_time
     task[:create_date] = task[:create_date].to_time
-    user.tasks.create!(task)
+    @task = @user.tasks.create!(task)
   end
-  # puts user.tasks.first
 end
 
 When("I am on {string} users page") do |string|
@@ -62,7 +60,7 @@ Then("I should be on {string} page") do |string|
 end
 
 Given("I am logged in as {string}") do |string|
-    user = User.find("email=",string)
+    @user = User.find("email=",string)
 end
 
 Then("I should be redirected to {string} page") do |string|
@@ -70,21 +68,26 @@ Then("I should be redirected to {string} page") do |string|
 end
 
 When("I am on the dashboard") do
-  visit '/users'
-  current_path = URI.parse(current_url).path
-  if current_path.respond_to? :should
-    current_path.should == path_to("users")
-  else
-    assert_equal path_to(page_name), current_path
-  end
+  visit '/users/login'
+  @user = User.first
+  fill_in("Email", :with => @user.email)
+  fill_in("Password", :with => @user.password)
+  click_on("Login")
+  # visit '/users'
+  # current_path = URI.parse(current_url).path
+  # if current_path.respond_to? :should
+  #   current_path.should == path_to("users")
+  # else
+  #   assert_equal path_to(page_name), current_path
+  # end
 end
 
 Then("I should see all my tasks") do
-  user = User.first
+  @user = User.first
     if page.respond_to? :should
-      page.should have_no_content(user.tasks.first.title)
+      page.should have_no_content(@user.tasks.first.title)
     else
-      assert page.has_no_content?(user.tasks.first.title)
+      assert page.has_no_content?(@user.tasks.first.title)
     end
 end
 

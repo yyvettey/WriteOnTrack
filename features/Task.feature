@@ -6,11 +6,14 @@ Feature: Test task
 
 Background: login page
 
+    Given the following users exist:
+    | First Name | Last Name | Email                    | Password  |
+    | Amith      | Murakonda | amithmurakonda@gmail.com | amith1234 |
+
     Scenario: add task
-        Given a user
         When I am on "login" users page
         And I fill in "Email" with "amithmurakonda@gmail.com"
-        And I fill in "Password" with "amith123"
+        And I fill in "Password" with "amith1234"
         And I press "Login"
 
         And I should see "Add a new task"

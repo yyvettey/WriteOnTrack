@@ -8,7 +8,6 @@ module NavigationHelpers
 
 
   def path_to(page_name)
-    puts page_name
     case page_name
 
     when /^new task$/
@@ -24,7 +23,8 @@ module NavigationHelpers
     when /^Task.*$/
       task = @user.tasks.find_by(title: page_name)
       user_task_path(@user,task)
-
+    when /^Progress History$/
+      progress_user_task_path(@user,@task)
     when /index$/
       '/users'
 

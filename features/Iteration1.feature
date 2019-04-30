@@ -4,6 +4,11 @@ Feature: Create new tasks and Editing the tasks
 
 Background: I logged in as "amithmurakonda@gmail.com"
 
+
+    Given the following users exist:
+    | First Name | Last Name | Email                    | Password |
+    | Amith      | Murakonda | amithmurakonda@gmail.com | amith123 |
+
     Scenario: create task
     Given a user
     When I am on "login" users page
