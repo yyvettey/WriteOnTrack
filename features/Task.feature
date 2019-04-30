@@ -23,6 +23,10 @@ Background: login page
         And I fill in "Target Value" with "10"
         And I fill in "Description" with "test for test"
         And  I press "Create"
+        Then I should be redirected to "Begin Progress Page" page
+        Then I press "Cancel"
+        Then I press "Back"
+        Then I press "Back"
         Then I back to the dashboard
         And I should see "test0"
         And I should see "0% Completed"

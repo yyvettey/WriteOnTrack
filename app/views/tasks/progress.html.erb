@@ -11,8 +11,8 @@
           <%=image_tag("UWC_white.png", {class:"img-responsive", style:"height:10vh;"}) %>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><%=link_to "Dashboard", users_path%></li>
-          <li><%=link_to "Logout", logout_path%></li>
+          <li><%=link_to "Dashboard", users_path, :class=> "btn btn-link"%></li>
+          <li><%=link_to "Logout", logout_path, :class=> "btn btn-link", :style=> 'float:right;margin-right:10px;'%></li>
         </ul>
       </div>
       <div class="collapse navbar-collapse">
@@ -27,16 +27,16 @@
       
     <div class="row">
       <div class="col-md-4 text-center">
-        <%= label :task, :create_date, "Create Date: "%>
-        <span><%=  @task.create_date.strftime("%d - %m - %Y")%></span>
+        <%= label :task, :create_date, "Project Start Date: "%>
+        <span><%=  @task.create_date.strftime("%Y - %m - %d")%></span>
       </div>
       <div class="col-md-4 text-center">
         <%= label :task, :create_date, "Time Remaining: "%>
         <span><%= if (@task.target_date - Time.now) < 0; 0; else; ((@task.target_date - Time.now)/86400).ceil ;end  %> Days</span>
       </div>
       <div class="col-md-4 text-center">
-        <%= label :task, :target_date, "Target Date: "%>
-        <span><%=  @task.target_date.strftime("%d - %m - %Y")%></span>
+        <%= label :task, :target_date, "Project Deadline: "%>
+        <span><%=  @task.target_date.strftime("%Y - %m - %d")%></span>
       </div>
     </div>
     
@@ -77,7 +77,7 @@
         <%= link_to "Back" , user_task_path(@user,@task) , {:class=> 'btn btn-info'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-warning'}%>
+        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-primary'}%>
       </div>
       
     </div>

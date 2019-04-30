@@ -25,6 +25,10 @@ module NavigationHelpers
       user_task_path(@user,task)
     when /^Progress History$/
       progress_user_task_path(@user,@task)
+
+    when /^Begin Progress Page$/
+        'users/1/tasks/new_progress/1'
+
     when /index$/
       '/users'
 

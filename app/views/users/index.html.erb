@@ -4,7 +4,7 @@
       <%=image_tag("UWC_white.png", {class:"img-responsive", style:"height:10vh;"}) %>
     </div>
     <ul class="nav navbar-nav navbar-right">
-    <li><%=link_to "Logout", logout_path%></li>
+    <li><%=link_to "Logout", logout_path, :class=> "btn btn-link", :style=> 'float:right;margin-right:10px;'%></li>
     </ul>
     <div class="collapse navbar-collapse">
     </div>
@@ -20,13 +20,18 @@
             <div class="row">
                 <h2> <%= @user.first_name.titleize%> <%= @user.last_name.titleize%> </h2>
             </div>
-            <span>
-                Howdy, welcome back! <br>
-                You have completed <br>
-                <%= @user_tasks.size %> tasks in <%= @user_tasks.size %> hours! <br>
-                You are the top5% <br>
-                writers in the world, <br>
-                congratulations! <br>
+            <span><h4 style="font-family: times, serif; font-size:14pt; font-style:italic">
+                Howdy, welcome back! <br><br>
+                
+                You have created <%= @user_tasks.size %> tasks<br>
+                and completed <%= @user_tasks.select { |task| (task.current_value*100)/task.target_value >= 100 }.size %> tasks. <br><br>
+                <!--You have written <%= @user_tasks.size %> pages <br>-->
+                <!--in <%= @user_tasks.size %> hours <%= @user_tasks.size %> minutes! <br><br>-->
+                
+                Congratulations, you are among the <br>
+                top5% writers in the world! <br>
+                
+            </h4>
             </span>
             <!--<div class="row">-->
             <!--    <a href="#" class="btn btn-default" style="margin-top:6px;">Settings</a>-->
@@ -52,14 +57,17 @@
   <% @user_tasks.each do |task|%>
     <div class="row">
           <div class="well">
-            <%= link_to task.title , user_task_path(@user,task), {:id=>"task",:method=> "get"}%>
-            <%= link_to "Delete Task", user_task_path(@user,task) , {:class=> "btn btn-danger", :method=> :delete, :style=> 'float:right;margin-right:10px;', :data => {:confirm => "Are you sure"}}%>
-            <%= link_to "Track Task" , user_task_path(@user,task), {:id=>"progress", :class=> "btn btn-warning", :style=> 'float:right;margin-right:10px;'}%>
-            <%= link_to "View Task" , view_user_task_path(@user,task), {:id=>"show", :class=> "btn btn-success", :style=> 'float:right;margin-right:10px;'}%>
-            <% @percent = (task.current_value*100)/task.target_value%>
-            <span class="btn btn-info" style="float:right;margin-right:10px;"> <%= if @percent>100; 100; else; @percent; end;%>% Completed</span>
-            <% if (task.target_date - Time.now) < 0%>
-            <span class='btn btn-warning' style='float:right;margin-right:10px;margin-top:-5px;'> Deadline Passed </span>
+            <%= task.title %>
+            <%= link_to "Delete Task", user_task_path(@user,task), {:class=> "btn btn-danger", :method=> :delete, :style=> 'float:right;margin-right:10px;margin-top:-5px;', :data => {:confirm => "Are you sure"}}%>
+            <%= link_to "View Task" , view_user_task_path(@user,task), {:id=>"show", :class=> "btn btn-success", :style=> 'float:right;margin-right:10px;margin-top:-5px;'}%>
+            <%= link_to "View Progress" , user_task_path(@user,task), {:id=>"progress", :class=>"btn btn-info", :style=> 'float:right;margin-right:10px;margin-top:-5px;'}%>
+            <%= link_to "Start Writing!", new_progress_user_task_path(@user,task) , {:id=>"progress", :class=>'btn btn-warning', :style=> 'float:right;margin-right:10px;margin-top:-5px;'}%>
+            <% @percent = (task.current_value*100)/task.target_value%> <span class="btn btn-secondary" style="float:right;margin-right:10px;margin-top:-5px;"> <%= if @percent>100; 100; else; @percent; end;%>% Completed</span>
+            
+            <% if (task.target_date - Time.now) < 0%> <span class='btn btn-secondary' style='float:right;margin-right:10px;margin-top:-5px;', color=red> Deadline Passed </span>
+            
+
+            
             <%end%>
           </div>
     </div>
