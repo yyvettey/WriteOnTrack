@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-md-4 text-center">
         <%= label :task, :create_date, "Project Start Date: "%>
-        <span><%=  @task.create_date.strftime("%d - %m - %Y")%></span>
+        <span><%=  @task.create_date.strftime("%Y - %m - %d")%></span>
       </div>
       <div class="col-md-4 text-center">
         <%= label :task, :create_date, "Time Remaining: "%>
@@ -36,7 +36,7 @@
       </div>
       <div class="col-md-4 text-center">
         <%= label :task, :target_date, "Project Deadline: "%>
-        <span><%=  @task.target_date.strftime("%d - %m - %Y")%></span>
+        <span><%=  @task.target_date.strftime("%Y - %m - %d")%></span>
       </div>
     </div>
     
@@ -74,10 +74,10 @@
         <%= link_to "Back" , users_path , {:class=> 'btn btn-info'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "View Progress History", progress_user_task_path(@user,@task) , {:class=>'btn btn-success'}%>
+        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-primary'}%>
       </div>
       <div class="col-md-2 text-center">
-        <%= link_to "Create New Progress", new_progress_user_task_path(@user,@task) , {:class=>'btn btn-primary'}%>
+        <%= link_to "View Progress History", progress_user_task_path(@user,@task) , {:class=>'btn btn-success'}%>
       </div>
     </div>
     
