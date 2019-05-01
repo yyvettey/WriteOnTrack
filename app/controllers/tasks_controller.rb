@@ -155,6 +155,8 @@ class TasksController < ApplicationController
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:id])
     @timer = @task.timers.find(params[:timer_id])
+    @task.current_value = @task.current_value - @timer.progress
+    @task.save
     @timer.destroy
     flash[:success] = "Task Destroyed successfully"
     redirect_to progress_user_task_path(@user,@task)
