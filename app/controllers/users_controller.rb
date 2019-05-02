@@ -13,13 +13,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(param_req)
-    if @user.save
-      flash[:success] = "Account Created successfully, Please check your email for Verification"
+    if param_req['password'].length < 6
+      flash[:error] = "The password should be longer than 6"
+      redirect_to new_user_path
     else
-      flash[:error] = "An Account has been registered with this email ID, please try again!"
+      @user = User.new(param_req)
+      if @user.save
+        flash[:success] = "Account Created successfully, Please check your email for Verification"
+      else
+        flash[:error] = "An Account has been registered with this email ID, please try again!"
+      end
+      redirect_to :login
     end
-    redirect_to :login
   end
 
   def admin
