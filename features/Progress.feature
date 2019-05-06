@@ -12,7 +12,7 @@ Background: I logged in as "amithmurakonda@gmail.com"
 
     Given a task for the user:
     | title  | create_date         | target_date         | target_value | desc                                | measure | current_value |
-    | Task 1 | 2019-05-30 14:18:21 | 2019-06-30 00:00:00 | 100000       | Complete my thesis by February 16th | Pages   | 1             |
+    | Task 1 | 2019-04-30 14:18:21 | 2019-06-30 00:00:00 | 100000       | Complete my thesis by February 16th | Pages   | 1             |
 
     Given timers for the task:
     | hours | minutes | seconds | progress | created_at              |
