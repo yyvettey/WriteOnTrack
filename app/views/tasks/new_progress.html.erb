@@ -22,13 +22,13 @@
       <div class="collapse navbar-collapse">
       </div>
     </div>
-      
+
     <div class="row">
       <div class="col-md-12 text-center">
         <h2><%= @task.title%></h2>
       </div>
     </div>
-      
+
     <div class="row">
       <div class="col-md-4 text-center">
         <%= label :task, :create_date, "Project Start Date: "%>
@@ -44,30 +44,24 @@
       </div>
     </div>
 
-    <div class="row" style="margin-top:2%">
-      <div class="col-md-12 well well-lg">
-        <div class="float-center text-center">
-          <%= form_tag update_user_task_path(@user,@task), method: "post" do%>
-          <div>
-            <div class="col-md-2 text-center">
-              <%= label :task, :current_value, "Update Progress: "%>
-            </div>
-            <div class="col-md-4 text-center">
-              <%= text_field :task, :current_value, value: @task.current_value%>
-            </div>
-            <div class="col-md-6  text-center">
-              <%= text_field :task, :hour, {value: 0, size: 2}%>
-              <small>Hours</small>:
-              <%= text_field :task, :min, {value: 0, size: 2}%>
-              <small>Minutes</small>:
-              <%= text_field :task, :sec, {value: 0, size: 2}%>
-              <small>Seconds</small>
-            </div>
-          </div>
-        </div>
+    <%= form_tag update_user_task_path(@user,@task), method: "post" do%>
+    <div>
+      <div class="col-md-2 text-center">
+        <%= label :task, :current_value, "Update Progress: "%>
+      </div>
+      <div class="col-md-4 text-center">
+        <%= text_field :task, :current_value, value: @task.current_value%>
+      </div>
+      <div class="col-md-6  text-center">
+        <%= text_field :task, :hour, {value: 0, size: 2}%>
+        <small>Hours</small>:
+        <%= text_field :task, :min, {value: 0, size: 2}%>
+        <small>Minutes</small>:
+        <%= text_field :task, :sec, {value: 0, size: 2}%>
+        <small>Seconds</small>
       </div>
     </div>
-          
+
     <div class="row" style="margin-top:2%">
       <div class="col-sm-4"></div>
       <div class="col-sm-1 text-center">
@@ -85,7 +79,7 @@
       </div>
       <div class="col-sm-4 text-center"></div>
     </div>
-    
+
     <div class="timer" style="visibility: hidden;"></div>
     <div class="row text-center" style="margin-top:2%">
       <div class="col-md-3 col-sm-12 text-center">
@@ -144,6 +138,6 @@
       </div>
     </div>
 
-  
+
   </body>
 </html>
