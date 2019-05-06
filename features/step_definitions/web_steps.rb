@@ -49,6 +49,17 @@ And("I follow {string}") do |string|
   click_link(string)
 end
 
+And("I refresh the page") do
+  # page.evaluate_script 'window.location.reload()'
+  page.refresh
+  # page.driver.browser.navigate.refresh
+  # visit current_path
+  # driver = Selenium::WebDriver
+  # driver.navigate.refresh
+  # @browser.navigate.refresh
+  # session.driver.browser.navigate.refresh
+end
+
 Then("I should see {string} message") do |string|
   expect(page).to have_content(string)
 end

@@ -21,8 +21,7 @@ module NavigationHelpers
     when /^users$/
       '/users'
     when /^Task.*$/
-      task = @user.tasks.find_by(title: page_name)
-      user_task_path(@user,task)
+      /users\/[0-9]+\/tasks\/[0-9]+/
     when /^Progress History$/
       progress_user_task_path(@user,@task)
 

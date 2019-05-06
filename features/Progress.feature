@@ -29,22 +29,26 @@ Background: I logged in as "amithmurakonda@gmail.com"
 
         And I should see "View Task"
         And I should see "View Progress"
-        # And I should see "Track Task"
         And I should see "Delete Task"
 
         And I follow "View Progress"
+        Then I should be on "Task" page
+
         And I should see "View Progress History"
         And I press "View Progress History"
         Then I should be on "Progress History" page
-        Then I should see all the Progresses
-        And  I press "Create New Progress"
+        And I should see all the Progresses
+
+        Then I press "Create New Progress"
+        And I refresh the page
         And I fill in "Update Progress" with "100000"
         And I fill in "task_hour" with "20"
         And I fill in "task_min" with "40"
         And I fill in "task_sec" with "10"
         And I press "Save Progress"
-        # Then I back to the "task" page
-        Then I back to the "Progress History" page
+
+        Then I should be on "Task" page
+        And I should see "Congratulations!"
         And I should see "100% Completed"
         And I should see "View Progress History"
         And I should see "Create New Progress"
