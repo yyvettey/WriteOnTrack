@@ -21,6 +21,18 @@ Given("a task for the user:") do |task_table|
   end
 end
 
+Given("timers for the task:") do |timers_table|
+  timers_table.hashes.each do |timer|
+    timer[:created_at] = timer[:created_at].to_time
+    timer[:hours] = timer[:hours].to_i
+    timer[:minutes] = timer[:minutes].to_i
+    timer[:seconds] = timer[:seconds].to_i
+    timer[:progress] = timer[:progress].to_i
+    @task.timers.create!(timer)
+  end
+  @task_timers = @task.timers
+end
+
 When("I am on {string} users page") do |string|
   visit path_to(string)
 end
@@ -101,7 +113,15 @@ When("I am on {string} page") do |string|
 end
 
 Then("I should see all the Progresses") do
-  pending # Write code here that turns the phrase above into concrete actions
+  # pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("Writing Time")
+  expect(page).to have_content("Writing Count")
+  expect(page).to have_content("Update Date")
+  @task_timers.each do |timer|
+    time_str = "%d hours %d minutes %d seconds" % [timer.hours, timer.minutes, timer.seconds]
+    expect(page).to have_content(time_str)
+    expect(page).to have_content(timer.created_at)
+  end
 end
 
 Then("I back to the {string} page") do |string|

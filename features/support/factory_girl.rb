@@ -41,3 +41,14 @@ FactoryGirl.define do
         # task.current_value "1"
     end
 end
+
+FactoryGirl.define do
+    factory :timer do |timer|
+        task
+        timer.hours      { 1 }
+        timer.minutes    { 20 }
+        timer.seconds    { 30 }
+        timer.progress   { 1 }
+        timer.created_at { "create at" }
+    end
+end
