@@ -48,14 +48,6 @@ When ("I select {string} and {string} and {string} as the {string}") do |year, m
 end
 
 
-#When (^(?:|I )select datetime "([^ ]*) ([^ ]*) ([^ ]*) " as the "([^"]*)"$) do |year, month, day, hour, minute, field|
-#  select(year,   :from => "#{field}_1i")
-#  select(month,  :from => "#{field}_2i")
-#  select(day,    :from => "#{field}_3i")
-#  select(hour,   :from => "#{field}_4i")
-#  select(minute, :from => "#{field}_5i")
-#end
-
 
 And("I press {string}") do |string|
   click_on(string)
