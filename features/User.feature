@@ -21,7 +21,7 @@ Background: login page
       Then I should be on "login" page
       Then I should see "Account Created successfully, Please check your email for Verification" message
 
-    Scenario: User login
+    Scenario: user login
       When I am on "login" users page
       And I fill in "Email" with "random5@gmail.com"
       And I fill in "Password" with "amith123"
