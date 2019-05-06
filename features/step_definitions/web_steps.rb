@@ -59,7 +59,7 @@ end
 
 And("I refresh the page") do
   # page.evaluate_script 'window.location.reload()'
-  page.refresh
+  page.refresh()
   # page.driver.browser.navigate.refresh
   # visit current_path
   # driver = Selenium::WebDriver
