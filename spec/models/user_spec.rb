@@ -26,8 +26,8 @@ describe User do
     end
     
     it "should be unique" do
-      duplicate_instructor = @user.dup
-      duplicate_instructor.email = @user.email.upcase
+      duplicate_user = @user.dup
+      duplicate_user.email = @user.email.upcase
       @user.save
     end
     
